@@ -26,7 +26,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         
         CheckInternetConnection().monitorNetwork(viewController: self)
     }
-    func fetchData(searchFilm:String){
+    func showFilmData(searchFilm:String){
         
         let dowmloadFilmsData = DownloadFilmsData()
         
@@ -50,7 +50,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
                 }
             }
     }
-    func detaygoster(imdbId:String){
+    func showFilmDetail(imdbId:String){
         let dowmloadFilmDetail = DownloadFilmsData()
             
             dowmloadFilmDetail.downloadFilmDetails(imdbId: imdbId) { (result) in
@@ -84,7 +84,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
        
-        detaygoster(imdbId: imdbArray[indexPath.row])
+        showFilmDetail(imdbId: imdbArray[indexPath.row])
         performSegue(withIdentifier: "toDetailsVc", sender: nil)
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -109,7 +109,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         imdbArray.removeAll()
         if !searchBar.text!.isEmpty {
             searchFilm = searchBar.text!
-            fetchData(searchFilm: searchFilm.trimmingCharacters(in: .whitespacesAndNewlines).addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) ?? searchFilm)
+            showFilmData(searchFilm: searchFilm.trimmingCharacters(in: .whitespacesAndNewlines).addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) ?? searchFilm)
           
         }
        
