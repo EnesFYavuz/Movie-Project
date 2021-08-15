@@ -29,15 +29,17 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     func showFilmData(searchFilm:String){
         
         let dowmloadFilmsData = DownloadFilmsData()
-        
-            dowmloadFilmsData.downloadFilms(search: searchFilm) { (result) in
+        dowmloadFilmsData.downloadFilms(search: searchFilm) { (result) in
                 switch result{
                 case.failure(let hata):
                     DispatchQueue.main.async {
                         if hata==DownloadError.dataNotCome{
-                            CheckInternetConnection().Alert(title: "Warning", message: "Could not retrieve data from internet.Please check your internet connection", viewController: self)
+                            Alert().Alert(title: "Warning", message: "Could not retrieve data from internet.Please check your internet connection", viewController: self)
                         }
-                        
+                        if hata==DownloadError.dataNotProcessed{
+                            Alert().Alert(title: "Warning",message:"The searched movie could not be found ", viewController: self)
+                        }
+
                     }
                 case.success(let filmArray):
                 if let filmArray = filmArray{
@@ -48,7 +50,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
                     
                     }
                 }
-            }
+        }
     }
     func showFilmDetail(imdbId:String){
         let dowmloadFilmDetail = DownloadFilmsData()
@@ -58,9 +60,9 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
                 case.failure(let hata):
                     DispatchQueue.main.async {
                         if hata==DownloadError.dataNotCome{
-                            CheckInternetConnection().Alert(title: "Warning", message: "Could not retrieve data from internet.Please check your internet connection", viewController: self)
+                            Alert().Alert(title: "Warning", message: "Could not retrieve data from internet.Please check your internet connection", viewController: self)
                         }
-                        
+                       
                     }
                 case.success(let filmDetails):
                         self.filmDetailsViewModel=FilmDetailViewModel(filmDetails: filmDetails)
@@ -92,7 +94,8 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         if segue.identifier == "toDetailsVc" {
             let destinationVC = segue.destination as! DetailsViewController
                 DispatchQueue.main.async {
-                    destinationVC.filmTitleLabel.text = self.filmDetailsViewModel.filmDetails.title
+                    destinationVC.filmTitleLabel.text =
+                        self.filmDetailsViewModel.filmDetails.title
                     destinationVC.filmImage.sd_setImage(with: URL(string:self.filmDetailsViewModel.filmDetails.poster), placeholderImage:UIImage(named: "loading.png"))
                     destinationVC.filmPlot.text = "Plot:\(self.filmDetailsViewModel.filmDetails.plot)"
                     destinationVC.filmDirectorLabel.text = "Director: \(self.filmDetailsViewModel.filmDetails.director)"
@@ -100,19 +103,14 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
                     ClientAnalytics().MovieDetailViewedEvent(filmTitleViewed: self.filmDetailsViewModel.filmDetails.title, filmDirectorViewed: self.filmDetailsViewModel.filmDetails.director,filmPlotViewed: self.filmDetailsViewModel.filmDetails.plot, filmImdbRating: self.filmDetailsViewModel.filmDetails.imdbRating)
                 }
             
-            
         }
-                  
-               
+                    
     }
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         imdbArray.removeAll()
         if !searchBar.text!.isEmpty {
             searchFilm = searchBar.text!
             showFilmData(searchFilm: searchFilm.trimmingCharacters(in: .whitespacesAndNewlines).addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) ?? searchFilm)
-          
         }
-       
     }
-    
 }

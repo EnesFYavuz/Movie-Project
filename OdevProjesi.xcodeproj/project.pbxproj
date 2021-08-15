@@ -21,6 +21,7 @@
 		C190AEE126BD84BC0093AB3D /* DownloadFilmsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C190AEE026BD84BC0093AB3D /* DownloadFilmsData.swift */; };
 		C194E40B26C180F30020DA7D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C194E40A26C180F30020DA7D /* GoogleService-Info.plist */; };
 		C194E40E26C185890020DA7D /* ClientAnalyticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C194E40D26C185890020DA7D /* ClientAnalyticsView.swift */; };
+		C1B4C7A526C88CB800386799 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B4C7A426C88CB800386799 /* AlertView.swift */; };
 		C1BA9ED626C29B80008EF305 /* LoadingAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1BA9ED526C29B80008EF305 /* LoadingAnimationView.swift */; };
 		C1BF4A2926BDBD1800811EB2 /* FilmsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1BF4A2826BDBD1800811EB2 /* FilmsTableViewCell.swift */; };
 		C1F0CDCF26BFDA0300AA1C60 /* FilmDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F0CDCE26BFDA0300AA1C60 /* FilmDetails.swift */; };
@@ -46,6 +47,7 @@
 		C190AEE026BD84BC0093AB3D /* DownloadFilmsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadFilmsData.swift; sourceTree = "<group>"; };
 		C194E40A26C180F30020DA7D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C194E40D26C185890020DA7D /* ClientAnalyticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientAnalyticsView.swift; sourceTree = "<group>"; };
+		C1B4C7A426C88CB800386799 /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		C1BA9ED526C29B80008EF305 /* LoadingAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingAnimationView.swift; sourceTree = "<group>"; };
 		C1BF4A2826BDBD1800811EB2 /* FilmsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmsTableViewCell.swift; sourceTree = "<group>"; };
 		C1F0CDCE26BFDA0300AA1C60 /* FilmDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmDetails.swift; sourceTree = "<group>"; };
@@ -84,6 +86,7 @@
 		C18D93EE26BEEAC000BE8451 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				C1B4C7A426C88CB800386799 /* AlertView.swift */,
 				C1BA9ED526C29B80008EF305 /* LoadingAnimationView.swift */,
 				C194E40D26C185890020DA7D /* ClientAnalyticsView.swift */,
 				C190AED426BD49470093AB3D /* CheckInternetConnectionView.swift */,
@@ -280,6 +283,7 @@
 				C190AEC426BD3CF60093AB3D /* ViewController.swift in Sources */,
 				C190AEC026BD3CF60093AB3D /* AppDelegate.swift in Sources */,
 				C190AEC226BD3CF60093AB3D /* SceneDelegate.swift in Sources */,
+				C1B4C7A526C88CB800386799 /* AlertView.swift in Sources */,
 				C190AED526BD49470093AB3D /* CheckInternetConnectionView.swift in Sources */,
 				C1BF4A2926BDBD1800811EB2 /* FilmsTableViewCell.swift in Sources */,
 				C18D93F026BEEAE600BE8451 /* DetailsViewController.swift in Sources */,
